@@ -1,0 +1,25 @@
+CREATE (RUSS:Instrument {code:'RUSS'})
+CREATE (Bloomberg:Source {code:'Bloomberg'})
+CREATE (ts:TimeSeries {name:'EOD'})
+CREATE (rev1:Revision {comment: 'added by auto loader', version: 0})
+CREATE (rev2:Revision {comment: 'added by auto loader again', version: 1})
+CREATE (rev1row1:Row {value: 23.444})
+CREATE (rev2row1:Row {value: 4.494})
+CREATE (wkday1:BizDay)
+CREATE (wkday2:BizDay)
+CREATE (Jan3:Date {date: date('2022-01-03')})
+CREATE (Jan4:Date {date: date('2022-01-04')})
+CREATE (RUSS)-[:FEED ]->(Bloomberg)
+CREATE (Bloomberg)-[:EOD]->(ts)
+
+CREATE(ts)-[:NEXT]->(rev1)
+CREATE(rev1)-[:NEXT]->(rev2)
+
+CREATE(rev1)-[:CAPTURE]->(rev1row1)
+CREATE(rev2)-[:CAPTURE]->(rev2row1)
+CREATE(rev1row1)-[:ON]->(wkday1)
+CREATE(rev2row1)-[:ON]->(wkday2)
+CREATE(wkday1)-[:ON]->(Jan3)
+CREATE(wkday2)-[:ON]->(Jan4)
+
+

@@ -1,8 +1,15 @@
 neo4j-home
 *~
 \#*
-target
 out
+target/classes
+target/test-classes
+target/maven-status
+target/generated-sources
+target/maven-archiver
+target/surefire-reports
+target/original-procedure-template-1.0.0-SNAPSHOT.jar
+target/procedure-template-1.0.0-SNAPSHOT.jar
 .project
 .classpath
 .settings
